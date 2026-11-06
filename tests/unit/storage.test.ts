@@ -4,8 +4,8 @@ const isNumbers = (input: unknown): input is number[] =>
   Array.isArray(input) && input.every((v: unknown) => typeof v === 'number');
 describe('StorageAdapter', () => {
   it('uses local storage with a versioned envelope', () => {
-    localStorage.clear();
-    const adapter = createStorageAdapter(() => localStorage);
+    window.localStorage.clear();
+    const adapter = createStorageAdapter(() => window.localStorage);
     writeVersioned(adapter, 'rdemo:v1:test', [1, 2]);
     expect(adapter.mode).toBe('local');
     expect(readVersioned(adapter, 'rdemo:v1:test', isNumbers, [])).toEqual([1, 2]);
@@ -23,8 +23,8 @@ describe('StorageAdapter', () => {
   it.each(['not json', '{"version":0,"data":[]}', '{"version":1,"data":["bad"]}'])(
     'isolates corrupt and incompatible data: %s',
     (raw) => {
-      localStorage.clear();
-      const adapter = createStorageAdapter(() => localStorage);
+      window.localStorage.clear();
+      const adapter = createStorageAdapter(() => window.localStorage);
       adapter.setItem('bad', raw);
       adapter.setItem('good', 'keep');
       expect(readVersioned(adapter, 'bad', isNumbers, [])).toEqual([]);
@@ -35,7 +35,8 @@ describe('StorageAdapter', () => {
   it('retains writes and notifies once after a quota failure', () => {
     let fail = false;
     const storage: Storage = {
-      length: 0, clear: () => {},
+      length: 0,
+      clear: () => {},
       key: () => null,
       getItem: () => null,
       setItem: () => {
@@ -56,7 +57,8 @@ describe('StorageAdapter', () => {
   it('retains previously read data when reads later fail', () => {
     let fail = false;
     const storage: Storage = {
-      length: 1, clear: () => {},
+      length: 1,
+      clear: () => {},
       key: () => null,
       getItem: () => {
         if (fail) throw new Error('Denied');

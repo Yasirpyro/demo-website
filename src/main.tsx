@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import '@fontsource-variable/inter';
-import '@fontsource-variable/oswald';
+import './styles/fonts.css';
 import './styles/tokens.css';
 import './styles/app.css';
 import App from './App';

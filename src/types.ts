@@ -7,6 +7,9 @@ export interface RestaurantConfig {
   mode: 'demo' | 'production';
   name: string;
   shortName: string;
+  brandDescriptor: string;
+  heroFootnote: string;
+  footerTagline: string;
   tagline: string[];
   description: string;
   eyebrow: string;
@@ -33,7 +36,14 @@ export interface RestaurantConfig {
   theme: ThemeTokens;
   heroItemIds: string[];
   featuredItemIds: string[];
-  story: { eyebrow: string; title: string; body: string; note: string };
+  story: {
+    eyebrow: string;
+    title: string;
+    body: string;
+    note: string;
+    imageItemId: string;
+    stamp: string[];
+  };
   visit: { title: string; body: string };
   credit?: { label: string; url: string };
 }

@@ -20,11 +20,11 @@ Edit src/config/restaurant.config.ts and src/config/menu.data.ts. Drop images wi
 ## Deploy to Netlify
 
 1. Push this repository to your Git provider.
-2. In Netlify choose Add new project ? Import an existing project, then select the repository.
+2. In Netlify choose Add new project — Import an existing project, then select the repository.
 3. Build command: npm run build. Publish directory: dist. Node version comes from netlify.toml.
 4. Deploy; confirm direct loads of /menu, /reserve and /dashboard.
 5. Alternatively run npm ci and npm run build locally, then drop the dist folder into Netlify Drop.
-6. In Domain management add your custom domain and follow Netlify?s DNS instructions.
+6. In Domain management add your custom domain and follow Netlify’s DNS instructions.
 
 ## Deploy to Vercel
 
@@ -32,7 +32,7 @@ Edit src/config/restaurant.config.ts and src/config/menu.data.ts. Drop images wi
 2. Select the pinned Node major if the host supports it. If 26 is not yet offered, wait for host support or explicitly document and verify an LTS compatibility change before deploying.
 3. Deploy; vercel.json supplies SPA routing and cache headers.
 4. Alternatively install the Vercel CLI, run npm ci and npm run build, then vercel deploy --prod from the repository root.
-5. Add a custom domain in Project Settings ? Domains and apply the displayed DNS records.
+5. Add a custom domain in Project Settings — Domains and apply the displayed DNS records.
 
 For a new prospect, copy/fork the repository, change config and assets, and create a separate hosting project/origin. Never share browser demo data between prospects.
 
@@ -43,3 +43,22 @@ This is a fictional brand with no live contact number. No payments, accounts, ba
 Later BroadcastChannel/localStorage sync is per browser profile and origin: a phone and laptop do not synchronize. Both demo tabs must use the same browser profile. Private browsing may disable storage; the application falls back to memory and data disappears on close. Real-phone WhatsApp verification requires the owner at M9.
 
 Requirements: docs/AGENTS.md, docs/PRD.md and docs/design.md. Technical choices: DECISIONS.md. Verification and limitations: REPORT.md.
+
+## Verification notes on Windows
+
+The tested runtime is Node 26.13.0. Browser binaries can be kept inside this ignored workspace cache:
+
+```powershell
+$env:PLAYWRIGHT_BROWSERS_PATH = Join-Path $PWD '.cache/browsers'
+npx playwright install chromium webkit
+npm run test:e2e
+```
+
+If Lighthouse times out at Tracing.start with full Chromium, use the dedicated headless shell bundled with the pinned Playwright version:
+
+```powershell
+$env:CHROME_PATH = (Resolve-Path '.cache/browsers/chromium_headless_shell-1194/chrome-win/headless_shell.exe').Path
+npm run lighthouse
+```
+
+This is a test-runner setting; the website build and deployment require no environment variables. Lighthouse starts its own preview on port 4180. The development watcher ignores generated test artifacts to avoid Windows file-lock errors.

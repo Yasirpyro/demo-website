@@ -8,3 +8,7 @@ test-results/
 .headroom-cache/
 *.local
 skill-observations/
+
+*.tsbuildinfo
+
+.lighthouseci/

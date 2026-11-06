@@ -1,9 +1,10 @@
 {
   "ci": {
     "collect": {
-      "startServerCommand": "npm run preview -- --port 4173",
-      "url": ["http://127.0.0.1:4173/"],
-      "numberOfRuns": 3
+      "startServerCommand": "npm run preview -- --port 4180 --strictPort",
+      "url": ["http://127.0.0.1:4180/"],
+      "numberOfRuns": 3,
+      "startServerReadyPattern": "Local:"
     },
     "assert": {
       "assertions": {

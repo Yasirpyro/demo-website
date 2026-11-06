@@ -8,7 +8,7 @@
 - Verify the chosen host supports the pinned Node runtime.
 - Publish the dist output with the supplied SPA and cache configuration.
 
-## Final demo readiness (M8?M9, pending)
+## Final demo readiness (M8–M9, pending)
 
 - Deploy the day before the presentation.
 - Open once online on the demo phone and laptop; wait for service-worker precaching.

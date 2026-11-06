@@ -3,12 +3,12 @@ import { Link, useLocation } from 'react-router-dom';
 import { restaurant } from '../config/restaurant.config';
 const stages: Record<string, { label: string; title: string; text: string }> = {
   '/menu': {
-    label: 'M2 ? MENU',
-    title: 'A little taste of what?s next.',
+    label: 'M2 · MENU',
+    title: 'A little taste of what’s next.',
     text: 'The full menu, search and dish details are the next milestone. For now, discover our signatures on the homepage.',
   },
   '/reserve': {
-    label: 'M5 ? RESERVATIONS',
+    label: 'M5 · RESERVATIONS',
     title: 'Good things take a little time.',
     text: 'Table reservations are planned for the next phase. This preview does not accept bookings.',
   },

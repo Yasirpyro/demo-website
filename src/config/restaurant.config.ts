@@ -18,6 +18,9 @@ export const restaurant: RestaurantConfig = {
   mode: 'demo',
   name: 'Saffron & Ember',
   shortName: 'saffron & ember',
+  brandDescriptor: 'Grill & Café',
+  heroFootnote: 'Fresh off the grill. Straight to the heart.',
+  footerTagline: 'Good food. Better together.',
   tagline: ['Good food.', 'Great company.', 'A little fire.'],
   description:
     'Slow-marinated. Flame-kissed. Always made with heart. Pull up a chair for the flavours that bring us together.',
@@ -50,6 +53,8 @@ export const restaurant: RestaurantConfig = {
   featuredItemIds: ['chicken-tikka', 'karahi', 'biryani', 'seekh-kebab'],
   story: {
     eyebrow: 'THE WAY WE COOK',
+    imageItemId: 'seekh-kebab',
+    stamp: ['A little smoke.', 'A lot of soul.'],
     title: 'Rooted in tradition.\nFinished over fire.',
     body: 'The crackle of the grill. The smell of fresh naan. A recipe passed around the family table. We bring the little things together to make something worth gathering for.',
     note: 'Freshly prepared. Generously shared.',
@@ -58,5 +63,5 @@ export const restaurant: RestaurantConfig = {
     title: 'There’s a seat\nwith your name on it.',
     body: 'A long lunch, a family dinner, or just one more cup of chai. Come as you are. Stay a little longer.',
   },
-  credit: { label: 'HYRX AI Studio', url: 'https://hyrx.ai' },
+  credit: { label: 'HYRX AI Studio', url: '' },
 };

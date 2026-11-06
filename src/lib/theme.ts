@@ -3,7 +3,7 @@ export function applyRestaurantTheme() {
   for (const [token, value] of Object.entries(restaurant.theme)) {
     if (value) document.documentElement.style.setProperty(token, value);
   }
-  document.title = restaurant.name + ' ? Grill & Caf?';
+  document.title = restaurant.name + ' — ' + restaurant.brandDescriptor;
   document
     .querySelector('meta[name="description"]')
     ?.setAttribute('content', restaurant.description);

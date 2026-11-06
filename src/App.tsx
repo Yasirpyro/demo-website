@@ -1,8 +1,9 @@
 import { lazy, Suspense, useEffect } from 'react';
-import { BrowserRouter, Link, Route, Routes, useLocation } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import { ErrorBoundary } from './components/ui/ErrorBoundary';
 import { StorageNotice } from './components/ui/StorageNotice';
-import { restaurant } from './config/restaurant.config';
+import { Header } from './components/layout/Header';
+import { Footer } from './components/layout/Footer';
 import Home from './routes/Home';
 import NotFound from './routes/NotFound';
 const ComingSoon = lazy(() => import('./routes/ComingSoon'));
@@ -26,19 +27,12 @@ export default function App() {
           Skip to content
         </a>
         <StorageNotice />
-        <header className="foundation-header">
-          <Link to="/">{restaurant.name}</Link>
-          <nav aria-label="Main navigation">
-            <Link to="/menu">Menu</Link>
-            <Link to="/reserve">Reserve</Link>
-            <Link to="/dashboard">Dashboard</Link>
-          </nav>
-        </header>
+        <Header />
         <main id="main" tabIndex={-1}>
           <Suspense
             fallback={
               <p className="recovery" role="status">
-                Setting your table?
+                Setting your table…
               </p>
             }
           >
@@ -51,6 +45,7 @@ export default function App() {
             </Routes>
           </Suspense>
         </main>
+        <Footer />
         <RouteFocus />
       </BrowserRouter>
     </ErrorBoundary>

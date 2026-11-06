@@ -8,7 +8,7 @@ export class ErrorBoundary extends Component<{ children: ReactNode }, { failed: 
     if (this.state.failed)
       return (
         <main className="recovery">
-          <p className="eyebrow">LET?S TRY THAT AGAIN</p>
+          <p className="eyebrow">LET’S TRY THAT AGAIN</p>
           <h1>Something went wrong.</h1>
           <p>Your table is still here. Reload to get back to it.</p>
           <button className="button" onClick={() => window.location.reload()}>
