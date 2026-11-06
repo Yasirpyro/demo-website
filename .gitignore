@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.cache/
+.tools/
+coverage/
+playwright-report/
+test-results/
+.headroom-cache/
+*.local
+skill-observations/

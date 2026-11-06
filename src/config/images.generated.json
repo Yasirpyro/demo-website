@@ -1,0 +1,22 @@
+{
+  "biryani": {
+    "blur": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAABQBACdASoUAB4APxF0r1AsJqQjMAgBgCIJYwDLpCHKNQvE84wTC4w6jEgIAP7Y0SYhkopL6B3Os0ipohboc38xYFxH15tH03NVH/vevGLy4AwAAAA=",
+    "width": 2000,
+    "height": 3000
+  },
+  "karahi": {
+    "blur": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAADwBACdASoUABMAPxF6r1MsJ6OiqA1RgCIJZACxHt8BedeiByY4Mb28GP0omVOxboAA/uqQ4Jt7q+EIu9QHG/B43gEsSmp7HeLEm5uy1q5f3rzKa3eONqSKBr9tC53WHkSmJVx+illQXFc1eTjcAvUUZ2nbAAAA",
+    "width": 2000,
+    "height": 1895
+  },
+  "kebab": {
+    "blur": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAABQBACdASoUAA0APxF0sFCsJqSisAgBgCIJbACdMoSA2CkDtYFiMiaUu6MQAP57Yx7eR+J4VckBWHQa7REUeUmpgpX8uemQ1+LrK0TLXwe00CZKClFKRYWkH0roQUWh8I1ErebujAA=",
+    "width": 2000,
+    "height": 1333
+  },
+  "tikka": {
+    "blur": "data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAAAQBACdASoUAA0APxFysFAsJqSisAgBgCIJbACdMoRwACqjmLTXK0JxOAD+dzSG+Y3646LX4vhKpB5EaOODdtJuWnCH1XqBUvicFSJHPlYIkIOjU71KX0veex/0P1sTwlqG0wNTrAyt8gAA",
+    "width": 2000,
+    "height": 1333
+  }
+}

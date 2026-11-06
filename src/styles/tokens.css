@@ -1,0 +1,32 @@
+:root {
+  --color-bg: #efe1c6;
+  --color-bg-soft: #f7eedc;
+  --color-surface: #ffffff;
+  --color-ink: #3a180d;
+  --color-ink-soft: #6b4a3c;
+  --color-band: #3a180d;
+  --color-on-band: #fbf4e6;
+  --color-primary: #8e1b22;
+  --color-primary-hover: #741419;
+  --color-on-primary: #ffffff;
+  --color-accent: #f2a31b;
+  --color-on-accent: #2a1208;
+  --color-border: #d9c7a6;
+  --color-success: #24643f;
+  --color-warning: #805000;
+  --color-danger: #b3261e;
+  --color-focus: #1d4ed8;
+  --font-body: 'Inter Variable', Arial, sans-serif;
+  --font-heading: 'Inter Variable', Arial, sans-serif;
+  --font-display: 'Oswald Variable', Impact, sans-serif;
+  --radius-card: 20px;
+  --radius-media: 24px;
+  --radius-pill: 999px;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --duration-slow: 400ms;
+  --duration-hero: 700ms;
+  --shadow-sm: 0 1px 2px rgb(58 24 13 / 8%);
+  --shadow-md: 0 8px 24px rgb(58 24 13 / 12%);
+}
