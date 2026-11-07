@@ -1,3 +1,4 @@
+import { Cart } from '../cart/Cart';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as Dialog from '@radix-ui/react-dialog';
@@ -38,6 +39,7 @@ export function Header() {
             <ArrowUpRight size={17} />
           </span>
         </Link>
+        <Cart />
         <Dialog.Root open={open} onOpenChange={setOpen}>
           <Dialog.Trigger className="mobile-menu icon-button" aria-label="Open navigation">
             <Menu size={23} />

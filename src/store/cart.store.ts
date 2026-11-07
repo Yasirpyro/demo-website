@@ -9,6 +9,10 @@ export interface CartLine {
   note?: string;
 }
 interface CartState {
+  notes: string;
+  setNotes: (notes: string) => void;
+  update: (index: number, qty: number, note?: string) => void;
+  restore: (line: CartLine) => void;
   lines: CartLine[];
   add: (itemId: string, qty: number, note?: string) => number;
   clear: () => void;
@@ -16,6 +20,7 @@ interface CartState {
 const envelope = z.object({
   version: z.literal(1),
   state: z.object({
+    notes: z.string().max(500).default(''),
     lines: z.array(
       z.object({
         itemId: z.string(),
@@ -51,6 +56,29 @@ export function createCartStore(adapter: StorageAdapter) {
     persist(
       (set, get) => ({
         lines: [],
+        notes: '',
+        setNotes: (notes) => set({ notes: notes.slice(0, 500) }),
+        update(index, qty, note) {
+          if (!Number.isFinite(qty)) return;
+          set({
+            lines: get().lines.flatMap((line, i) =>
+              i !== index
+                ? [line]
+                : qty <= 0
+                  ? []
+                  : [
+                      {
+                        ...line,
+                        qty: Math.min(20, Math.trunc(qty)),
+                        ...(note === undefined ? {} : { note: note.slice(0, 240) }),
+                      },
+                    ],
+            ),
+          });
+        },
+        restore: (line) => {
+          get().add(line.itemId, line.qty, line.note);
+        },
         add(itemId, qty, note = '') {
           if (!menu.some((item) => item.id === itemId && item.available) || !Number.isFinite(qty))
             return 0;
@@ -70,13 +98,13 @@ export function createCartStore(adapter: StorageAdapter) {
           });
           return added;
         },
-        clear: () => set({ lines: [] }),
+        clear: () => set({ lines: [], notes: '' }),
       }),
       {
         name: 'rdemo:v1:cart',
         version: 1,
         storage: createJSONStorage(() => safeStorage),
-        partialize: (state) => ({ lines: state.lines }),
+        partialize: (state) => ({ lines: state.lines, notes: state.notes }),
       },
     ),
   );

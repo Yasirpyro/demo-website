@@ -3,13 +3,17 @@
 - [x] M0 Foundation — lint, strict typecheck, 18 unit tests and token contrast pass
 - [x] M1 Layout + Hero — responsive homepage, 21 unit tests, 48 browser tests, aggregate Lighthouse CI assertions pass
 - [x] M2 Menu — Grillizia rebrand, category panels, 20-dish menu, URL filters, detail sheets and persisted local cart intake; 37 unit tests and 80 browser tests pass
-- [ ] M3 Cart
+- [x] M3 Cart — drawer, mobile bar, notes, quantities, integer fees and undo; 40 unit tests pass
 - [ ] M4 WhatsApp ordering
 - [ ] M5 Reservations
 - [ ] M6 Offers + Reviews
 - [ ] M7 Dashboard
 - [ ] M8 Offline + polish
 - [ ] M9 Verification + deploy
+
+## Two-sprint completion
+
+Sprint 1: M3–M6. Sprint 2: M7–M9. Each milestone is checked and committed independently.
 
 ## Current delivery limits
 
