@@ -1,3 +1,4 @@
+import { GatherSections } from '../components/offers/GatherSections';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
@@ -216,6 +217,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <GatherSections />
       <section className="visit-section" id="visit" aria-labelledby="visit-title">
         <div className="container">
           <div className="visit-intro">

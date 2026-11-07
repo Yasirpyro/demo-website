@@ -9,7 +9,8 @@ export function Header() {
   const [open, setOpen] = useState(false);
   const links = [
     { to: '/menu', label: 'The menu' },
-    { to: '/#story', label: 'Our story' },
+    { to: '/#offers', label: 'Offers' },
+    { to: '/#reviews', label: 'Reviews' },
     { to: '/#visit', label: 'Visit us' },
   ];
   return (

@@ -227,5 +227,68 @@ export const menu: MenuItem[] = [
   },
 ];
 
-export const offers: Offer[] = [];
-export const reviews: Review[] = [];
+export const offers: Offer[] = [
+  {
+    id: 'fireside-for-two',
+    title: 'Fireside for two',
+    blurb: 'A smoky start, fresh naan and two cups of chai. Made for sharing.',
+    itemIds: [
+      { id: 'chicken-tikka', qty: 2 },
+      { id: 'garlic-naan', qty: 2 },
+      { id: 'karak-chai', qty: 2 },
+    ],
+    price: 2100,
+    validity: 'Available every day',
+    image: 'tikka',
+  },
+];
+export const reviews: Review[] = [
+  {
+    id: 'sample-1',
+    name: 'Sample guest A',
+    rating: 5,
+    text: 'The smoky tikka, warm naan and a long conversation. Exactly the kind of evening we came for.',
+    date: '2026-10-12',
+    sample: true,
+  },
+  {
+    id: 'sample-2',
+    name: 'Sample guest B',
+    rating: 4,
+    text: 'A generous family lunch, with a little something for everyone. We finished with cardamom chai.',
+    date: '2026-10-18',
+    sample: true,
+  },
+  {
+    id: 'sample-3',
+    name: 'Sample guest C',
+    rating: 5,
+    text: 'That first bite from the grill was worth slowing down for. A warm place to gather around good food.',
+    date: '2026-10-25',
+    sample: true,
+  },
+];
+export const cartItems: MenuItem[] = [
+  ...menu,
+  ...offers.map((offer) => ({
+    id: 'offer:' + offer.id,
+    categoryId: 'offers',
+    name: offer.title,
+    description: offer.blurb,
+    price: offer.price,
+    image: offer.image,
+    tags: [] as MenuItem['tags'],
+    available: offer.itemIds.every((line) =>
+      menu.some((item) => item.id === line.id && item.available),
+    ),
+  })),
+];
+export function offerSavings(offer: Offer) {
+  return Math.max(
+    0,
+    offer.itemIds.reduce(
+      (sum, line) => sum + (menu.find((item) => item.id === line.id)?.price ?? 0) * line.qty,
+      0,
+    ) - offer.price,
+  );
+}

@@ -6,7 +6,7 @@
 - [x] M3 Cart — drawer, mobile bar, notes, quantities, integer fees and undo; 40 unit tests pass
 - [x] M4 WhatsApp ordering — validated checkout, local orders, bounded links and copy recovery; 44 unit tests pass
 - [x] M5 Reservations — timezone slots, capacity, validation, confirmation and calendar export; 49 unit tests pass
-- [ ] M6 Offers + Reviews
+- [x] M6 Offers + Reviews — configured discounted bundles, computed savings, sample reviews and reserve teaser; 51 unit tests pass
 - [ ] M7 Dashboard
 - [ ] M8 Offline + polish
 - [ ] M9 Verification + deploy

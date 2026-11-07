@@ -1,4 +1,4 @@
-import { menu } from '../config/menu.data';
+import { cartItems as menu } from '../config/menu.data';
 import { restaurant } from '../config/restaurant.config';
 import type { CartLine } from '../store/cart.store';
 export type OrderType = 'delivery' | 'pickup' | 'dinein';

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import * as Toast from '@radix-ui/react-toast';
 import { Flame, Leaf, Search, ShoppingBag, X, UtensilsCrossed } from 'lucide-react';
-import { categories, menu } from '../config/menu.data';
+import { categories, menu, cartItems } from '../config/menu.data';
 import { restaurant } from '../config/restaurant.config';
 import { filterMenu, type MenuTag } from '../lib/menu-filters';
 import { formatMoney } from '../lib/format';
@@ -71,7 +71,8 @@ export default function Menu() {
   };
   const count = lines.reduce((total, line) => total + line.qty, 0);
   const subtotal = lines.reduce(
-    (total, line) => total + line.qty * (menu.find((item) => item.id === line.itemId)?.price ?? 0),
+    (total, line) =>
+      total + line.qty * (cartItems.find((item) => item.id === line.itemId)?.price ?? 0),
     0,
   );
   return (
@@ -186,12 +187,12 @@ export default function Menu() {
                 {lines.map((line, i) => (
                   <li key={line.itemId + ':' + (line.note ?? '') + ':' + i}>
                     <span>
-                      {line.qty} × {menu.find((item) => item.id === line.itemId)?.name}
+                      {line.qty} × {cartItems.find((item) => item.id === line.itemId)?.name}
                       {line.note && <small dir="auto">{line.note}</small>}
                     </span>
                     <span>
                       {formatMoney(
-                        line.qty * (menu.find((item) => item.id === line.itemId)?.price ?? 0),
+                        line.qty * (cartItems.find((item) => item.id === line.itemId)?.price ?? 0),
                       )}
                     </span>
                   </li>

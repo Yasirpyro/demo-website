@@ -5,7 +5,7 @@ import * as Dialog from '@radix-ui/react-dialog';
 import { Link } from 'react-router-dom';
 import { ShoppingBag, X, Minus, Plus, Trash2 } from 'lucide-react';
 import { useCartStore, type CartLine } from '../../store/cart.store';
-import { menu } from '../../config/menu.data';
+import { cartItems as menu } from '../../config/menu.data';
 import { cartTotals, type OrderType } from '../../lib/cart';
 import { formatMoney } from '../../lib/format';
 import { FoodImage } from '../ui/FoodImage';

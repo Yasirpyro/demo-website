@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { createJSONStorage, persist, type StateStorage } from 'zustand/middleware';
 import { z } from 'zod';
-import { menu } from '../config/menu.data';
+import { cartItems as menu } from '../config/menu.data';
 import { storageAdapter, type StorageAdapter } from '../lib/storage-adapter';
 export interface CartLine {
   itemId: string;

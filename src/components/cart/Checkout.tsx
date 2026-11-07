@@ -6,7 +6,7 @@ import { checkoutSchema, type Order } from '../../lib/records';
 import { orderLink, copyText, openWhatsApp } from '../../lib/whatsapp';
 import { useOrdersStore } from '../../store/orders.store';
 import { useCartStore } from '../../store/cart.store';
-import { menu } from '../../config/menu.data';
+import { cartItems as menu } from '../../config/menu.data';
 import { cartTotals, type OrderType } from '../../lib/cart';
 import { restaurant } from '../../config/restaurant.config';
 export function OrderConfirmation({ order }: { order: Order }) {

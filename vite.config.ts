@@ -1,7 +1,7 @@
 import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
 import { restaurant } from './src/config/restaurant.config';
-import { menu } from './src/config/menu.data';
+import { menu, reviews } from './src/config/menu.data';
 import images from './src/config/images.generated.json';
 export default defineConfig({
   base: '/',
@@ -21,6 +21,10 @@ export default defineConfig({
     react(),
     {
       name: 'restaurant-document',
+      buildStart() {
+        if (restaurant.mode === 'production' && reviews.some((review) => review.sample))
+          this.warn('Sample reviews remain in production restaurant config.');
+      },
       transformIndexHtml(html) {
         const escape = (text: string) =>
           text
