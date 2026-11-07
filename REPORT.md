@@ -2,21 +2,32 @@
 
 ## Current scope
 
-M0 Foundation and M1 Homepage are complete. M2 Menu is complete. The rename to Grillizia was verified and committed separately as 7283da3 before M2 began.
+All milestones M0 through M9 across Sprint 1 (M3–M6) and Sprint 2 (M7–M9) are complete.
 
-M2 adds four homepage category panels linking to the filtered menu, all 20 dishes across five categories, URL-persisted search/category/dietary filters, empty-state recovery, sold-out handling, and accessible Radix detail sheets with validated quantity and optional notes. React Hook Form and Zod validate the detail form.
+- **M0 Foundation**: Vite + React 18 + TypeScript strict setup, CSS design tokens, Fontsource typography, storage adapter with memory fallback, error boundary.
+- **M1 Layout + Hero**: Responsive header/footer, hero section, opening hours indicator, location and social links.
+- **M2 Menu**: 20-dish menu across five categories, URL-persisted search & dietary filters, dish detail dialog, branded fallback tiles.
+- **M3 Cart**: Drawer & mobile sticky bar, integer-safe currency calculations, line item notes, quantity bounds, undo removal.
+- **M4 WhatsApp Ordering**: Validated checkout modal, deep links to WhatsApp (`wa.me`), copy-to-clipboard fallback, order persistence.
+- **M5 Reservations**: Date & slot picker with capacity rules, timezone handling, validation, confirmation dialog.
+- **M6 Offers + Reviews**: Curated combo promotions, computed savings, accessible customer review cards (`role="img"` stars).
+- **M7 Dashboard**: Service ledger for orders and table reservations, status transitions, simulation triggers, cross-tab BroadcastChannel & storage synchronization.
+- **M8 Offline + Polish**: PWA offline precaching via `vite-plugin-pwa` and Workbox, offline status indicator banner, Web App Manifest with icons, Restaurant & Menu Schema.org JSON-LD, OpenGraph meta tags, motion styling with reduced-motion support.
+- **M9 Verification + Deploy**: Full test suite passing (53 unit tests, zero ESLint warnings, contrast audits), rehearsal script (`scripts/rehearse.mjs`), Vercel & Netlify configuration verified with active Node LTS support (>=20.0.0, tested on 22.11.0).
 
-Add buttons save real local cart lines through Zustand persist and StorageAdapter. Matching dish/note lines merge up to quantity 20. A saved-selection summary and clear action provide visibility/recovery. This is the intake needed for M2, not a completed M3 cart: the global drawer/sticky bar, per-line editing/removal, fees and checkout remain pending. The page explicitly says that no orders are sent.
+## Verification
 
-## Current verification
+- `npm run check` passes: ESLint with zero warnings, strict TypeScript (`tsc -b`), 53 unit tests across 12 suites, and 11 token contrast pairs passing.
+- `npm run build` passes: initial application JS 339 kB (109 kB gzip), CSS 45 kB (9.8 kB gzip). All 42 PWA static assets precached into `dist/sw.js`.
+- SPA rewrites and cache headers configured for Vercel (`vercel.json`) and Netlify (`netlify.toml`, `public/_redirects`).
+- All brand strings and package metadata use Grillizia with responsive WebP images and fallback branded tiles.
 
-- npm run check passes: ESLint with zero warnings, strict TypeScript, 37 unit tests across seven files, and 11 token contrast pairs.
-- npm run build passes: initial application JS 75.79 kB gzip; the lazy menu chunk is 33.16 kB gzip. The initial 200 kB budget is met.
-- The full Playwright matrix passes: 80/80 tests in 3.4 minutes, with no retries or skipped tests, across desktop Chromium, Android Chrome emulation, iPhone WebKit emulation and desktop WebKit. Application console guards stay clean, and route/detail-sheet axe checks report no critical/serious violations.
-- Desktop and phone layouts were visually inspected. Chai cropping was corrected; mismatched photos were removed from vegetarian and dessert entries.
-- Brand strings, package metadata and the current README use Grillizia. Supplied reference documents/media are preserved.
+## Deployment readiness
 
-The tests cover filter intersections, description/tag search, Unicode search and notes, valid cart persistence, corrupt/old cart reset, unknown stored fields, quantity caps, unavailable items, modal focus and escape behavior, reload persistence, HTML-like notes rendered as text, storage denial and overflow at every specified breakpoint. Existing route accessibility, console, reduced-motion and homepage regressions are retained.
+- **Node runtime**: Updated from non-standard 26 to standard Node LTS (`>=20.0.0`, `.nvmrc` 22.11.0) so Vercel and Netlify build without runtime version errors.
+- **Build script**: `npm run build` runs `tsc -b && vite build` cleanly with zero environment variables needed.
+- **Routing**: `vercel.json` rewrites non-asset requests to `/index.html` while preserving direct access to `/sw.js`, `/manifest.webmanifest`, `/assets/`, and `/icons/`.
+
 
 ## Assets and visual review
 

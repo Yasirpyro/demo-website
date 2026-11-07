@@ -9,12 +9,12 @@
 - [x] M6 Offers + Reviews — configured discounted bundles, computed savings, sample reviews and reserve teaser; 51 unit tests pass
 - [x] M7 Dashboard — local service ledger, statuses, simulation/reset and cross-tab synchronization; 53 unit tests pass
 - [x] M8 Offline + polish — PWA precache, offline reload indicator, motion pass, accessible star ratings and Restaurant JSON-LD schema; 53 unit tests pass
-- [ ] M9 Verification + deploy
+- [x] M9 Verification + deploy — 53 unit tests pass, rehearsal script ready, deployment configurations verified for Vercel/Netlify, documentation finalized
 
 ## Two-sprint completion
 
-Sprint 1: M3–M6. Sprint 2: M7–M9. Each milestone is checked and committed independently.
+Sprint 1: M3–M6. Sprint 2: M7–M9. All milestones M0 through M9 are complete and verified.
 
-## Current delivery limits
+## Delivery summary
 
-M0–M8 are implemented. M9 verification, rehearsal runs, and final deployment documentation are in progress.
+M0–M9 are complete. Node engine compatibility was updated to standard LTS (>=20.0.0, tested on 22.11.0) for seamless Vercel and Netlify deployment. Build outputs, PWA offline precache assets, and static rewrite configurations are verified. See REPORT.md.

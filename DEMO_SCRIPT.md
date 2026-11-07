@@ -1,12 +1,31 @@
-# M2 menu walkthrough
+# Grillizia demo script — Golden path walkthrough
 
-1. Open the Grillizia homepage at phone and laptop widths.
-2. Switch the hero dishes and browse house favourites.
-3. Tap a category photo panel to open its filtered menu.
-4. Search for tikka, toggle Veg, and reload to show filters persist in the URL.
-5. Clear filters, open a dish, choose quantity two and add an optional note. Add it to the local cart.
-6. Read the saved selection and reload to show it persists. No order has been sent.
-7. View a sold-out dish and show that its Add button is disabled.
-8. Read opening hours and the visit section.
+1. **Homepage & Brand**:
+   - Open Grillizia on phone and laptop. Note the warm visual identity, typography, and live opening-hours badge.
+   - Showcase category photo panels and hero dish switcher.
 
-The three-minute ordering/reservations golden path in docs/PRD.md section 3 remains pending. Full cart review/drawer is M3, WhatsApp ordering M4, reservations M5, and dashboard management M7. Offline installation/rehearsal remains M8–M9.
+2. **Menu & Filtering**:
+   - Tap a category panel to jump straight into the filtered menu.
+   - Use search ("tikka") and dietary toggles ("Veg"); show that filters update the URL so links can be shared.
+   - Open a dish sheet, select quantity and enter a special preparation note, then tap "Add to cart".
+
+3. **Cart & Ordering**:
+   - Open the cart drawer (or mobile sticky bar).
+   - Show transparent integer fees, item notes, and instant undo if an item is decreased or removed.
+   - Click "Order on WhatsApp", enter customer details, and tap "Save order & open WhatsApp".
+   - Note the formatted message with line items, notes, and totals, plus the "Copy order text" fallback.
+
+4. **Table Reservation**:
+   - Navigate to `/reserve`.
+   - Pick date, time slot, and guest count. Highlight timezone-aware slot rules and instant confirmation.
+
+5. **Live Dashboard & Cross-Tab Sync**:
+   - Open `/dashboard` in a second tab of the same browser profile.
+   - Notice the newly submitted order and reservation appearing immediately without page reload (via BroadcastChannel/storage).
+   - Change order status from "Received" to "Preparing" to "Ready".
+   - Use "Simulate incoming order" to demonstrate high-volume live kitchen flow.
+   - Use "Reset demo data" to quickly restore the environment for the next prospect.
+
+6. **Offline Capability & PWA**:
+   - Disconnect network / activate Airplane mode.
+   - Reload any page: observe the discreet offline indicator and seamless full-app navigation, dish images, and cart interaction powered by the service worker.
