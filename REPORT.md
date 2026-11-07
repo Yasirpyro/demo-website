@@ -1,68 +1,47 @@
-# M0 + M1 delivery report
+# Grillizia delivery report
 
-## Built
+## Current scope
 
-- Vite + React 18 + strict TypeScript, Tailwind tokens, local fonts, routing, error recovery, and typed branding/menu configuration.
-- Twenty menu seed dishes across five categories; monetary formatting uses integer amounts and configured currency precision.
-- Versioned storage adapter with corrupt-key recovery and in-memory fallback, including a visible session-only notice.
-- Responsive homepage with manual hero selectors, signature-dish browsing, cooking story, live Karachi opening hours, illustrated map and footer.
-- Explicit interim menu/reservation/dashboard routes and a friendly 404.
-- Local photo optimization and reference-analysis scripts; 4 source photos, 12 responsive WebP files, inline blur previews and photo credits.
-- Netlify/Vercel SPA settings, CI, setup/rebranding/deployment documentation and milestone ledger.
+M0 Foundation and M1 Homepage are complete. M2 Menu is complete. The rename to Grillizia was verified and committed separately as 7283da3 before M2 began.
 
-## Verified on Node 26.13.0
+M2 adds four homepage category panels linking to the filtered menu, all 20 dishes across five categories, URL-persisted search/category/dietary filters, empty-state recovery, sold-out handling, and accessible Radix detail sheets with validated quantity and optional notes. React Hook Form and Zod validate the detail form.
 
-| Check                     | Result                                                                                       |
-| ------------------------- | -------------------------------------------------------------------------------------------- |
-| ESLint                    | Pass, zero warnings                                                                          |
-| TypeScript strict check   | Pass                                                                                         |
-| Vitest                    | 21/21 tests across 5 files                                                                   |
-| Token contrast            | 11 text/UI pairs pass; dark surfaces use a light focus outline                               |
-| Production build          | Pass; initial application JS 74.58 kB gzip, below 200 kB budget                              |
-| Playwright                | 48/48 tests, 2.3 minutes, no retries or skipped tests                                        |
-| Browser matrix            | Chromium desktop, Android Chrome emulation, iPhone WebKit emulation, desktop WebKit          |
-| axe-core                  | Zero critical/serious violations on home, menu, reserve, dashboard and 404 in all 4 projects |
-| Application console guard | Zero errors/warnings throughout the passing production suite                                 |
-| Development smoke         | All 5 routes render; zero console errors/warnings                                            |
-| Responsive overflow       | None at 360, 390, 430, 768, 1024, 1280, 1536 and 844×390 landscape                           |
-| Keyboard                  | Mobile focus trap, Escape dismissal, focus return and link navigation pass                   |
-| Failure/recovery          | Blocked storage, corrupt/old stored data, quota failure and image fallback/recovery pass     |
-| Reduced motion            | Image and entrance animations disabled                                                       |
-| Asset origin              | No external runtime requests during homepage browsing                                        |
-| Formatting / whitespace   | Pass                                                                                         |
+Add buttons save real local cart lines through Zustand persist and StorageAdapter. Matching dish/note lines merge up to quantity 20. A saved-selection summary and clear action provide visibility/recovery. This is the intake needed for M2, not a completed M3 cart: the global drawer/sticky bar, per-line editing/removal, fees and checkout remain pending. The page explicitly says that no orders are sent.
 
-## Lighthouse CI: three mobile runs
+## Current verification
 
-The CI command completed successfully using Chromium headless shell; all configured aggregate score assertions passed.
+- npm run check passes: ESLint with zero warnings, strict TypeScript, 37 unit tests across seven files, and 11 token contrast pairs.
+- npm run build passes: initial application JS 75.79 kB gzip; the lazy menu chunk is 33.16 kB gzip. The initial 200 kB budget is met.
+- The full Playwright matrix passes: 80/80 tests in 3.4 minutes, with no retries or skipped tests, across desktop Chromium, Android Chrome emulation, iPhone WebKit emulation and desktop WebKit. Application console guards stay clean, and route/detail-sheet axe checks report no critical/serious violations.
+- Desktop and phone layouts were visually inspected. Chai cropping was corrected; mismatched photos were removed from vegetarian and dessert entries.
+- Brand strings, package metadata and the current README use Grillizia. Supplied reference documents/media are preserved.
 
-| Run | Performance | Accessibility | Best Practices | SEO | LCP     | CLS     | TBT      |
-| --- | ----------- | ------------- | -------------- | --- | ------- | ------- | -------- |
-| 1   | 89          | 100           | 96             | 92  | 3.333 s | 0.00131 | 186 ms   |
-| 2   | 92          | 100           | 96             | 92  | 3.194 s | 0.00131 | 80.5 ms  |
-| 3   | 91          | 100           | 96             | 92  | 3.251 s | 0.00131 | 134.5 ms |
+The tests cover filter intersections, description/tag search, Unicode search and notes, valid cart persistence, corrupt/old cart reset, unknown stored fields, quantity caps, unavailable items, modal focus and escape behavior, reload persistence, HTML-like notes rendered as text, storage denial and overflow at every specified breakpoint. Existing route accessibility, console, reduced-motion and homepage regressions are retained.
 
-Median Performance is 91; one individual run fell below 90. CLS and TBT meet their budgets in all three runs. The separate strict LCP < 2 s target is not met and remains explicit M8 performance work. Further M8 improvements include image delivery, readable small metadata, accessible-name matching for visual dish counters, and a valid robots.txt. Do not treat this first delivery as final M9 acceptance.
+## Assets and visual review
 
-Full reports: .cache/lighthouse/. Full Chromium timed out at Tracing.start on this host; the dedicated headless shell completed normally with no Lighthouse runtime error. README records the reproducible runner setting.
+Seven source photos are stored locally with Pexels credits; the image script generates 21 responsive WebP assets and seven tiny previews. Seven exact-dish photo gaps use complete branded fallback tiles: paneer tikka, daal, vegetable rice, raita, kachumber, lassi and kheer. The paneer download failed twice. Exact replacement filenames and crops are documented in IMAGES_NEEDED.md; no unrelated meat photos are used for these vegetarian dishes.
 
-## Visual review
+The existing cream/brown/maroon identity is retained for Grillizia. Inter handles body/UI and Oswald category headings. Layout follows the supplied photo-panel reference, with horizontal snap scrolling on phones and four panels on desktop. The menu uses two columns on phones, three at tablet/desktop widths and four on wider screens. The detail sheet respects safe areas and reduced motion. The search label remains visibly present.
 
-Desktop and phone screenshots were inspected. The cream/brown palette was compared with the supplied screenshot; reference-video frames were sampled every 500 ms. Motion is adapted to manual interaction rather than perpetual rotation. The final phone layout places dish thumbnails in a horizontal row. Screenshots are under .cache/screenshots; browser reports are under playwright-report.
+Design self-review: AI Slop Score 1/10 and Distinctiveness Score 8/10, judged against the supplied references. These are design judgments, not automated metrics.
 
-Design self-review: AI Slop Score 1/10 (intentional but common Inter); Distinctiveness Score 8/10 (food-led composition, warm tokens, signature hero controls and editorial hierarchy). These are design judgments, not automated metrics.
+## Earlier performance baseline
 
-## Explicit limitations and next work
+M0–M1 Lighthouse CI passed its aggregate assertions using Chromium headless shell. Those measurements have not been rerun for M2 and are not claimed as current M2 results.
 
-M2–M9 remain unchecked. Menu filtering/details, cart, WhatsApp ordering, reservations, offers/reviews and dashboard record management are not implemented. No data submission is implied by interim routes. Zustand feature stores and cross-tab record synchronization start with their owning milestones.
+| Baseline run | Performance | Accessibility | Best Practices | SEO | LCP     | CLS     | TBT      |
+| ------------ | ----------- | ------------- | -------------- | --- | ------- | ------- | -------- |
+| 1            | 89          | 100           | 96             | 92  | 3.333 s | 0.00131 | 186 ms   |
+| 2            | 92          | 100           | 96             | 92  | 3.194 s | 0.00131 | 80.5 ms  |
+| 3            | 91          | 100           | 96             | 92  | 3.251 s | 0.00131 | 134.5 ms |
 
-All fonts/images are local, but service-worker precaching, offline reload/installability and the ten-run offline golden-path rehearsal remain M8–M9. The final Restaurant JSON-LD and full demo SEO work also remain pending. No deployment, custom-domain configuration, real phone, real WhatsApp app or live-host routing check has been performed.
+The strict LCP < 2 s target remains unmet for M8. README documents the Windows headless-shell runner setting after full Chromium timed out at Tracing.start. These are historical score results, not full M9 acceptance.
 
-The brand and location are fictional/illustrative. Phone, WhatsApp and social fields are intentionally empty and their links stay hidden. Supply real values before a prospect demo. The map is an illustration; the external map link opens the named neighborhood. Photo substitutions for naan and chai are documented for M2.
+## Remaining work and limits
 
-Browser emulation is not a substitute for real-device sign-off. Later dashboard sync is same-profile/same-origin only; memory fallback data disappears on close. Detailed defaults and justified adaptations are in DECISIONS.md.
+M3–M9 remain pending: full cart review, WhatsApp ordering, reservations, offers/reviews, dashboard management, cross-tab record sync, PWA/offline installation, final SEO/JSON-LD and the ten-run offline rehearsal. Reserve and dashboard routes remain explicit interim screens.
 
-The Node 26 test tooling emits process-level deprecation/color-environment notices; these are separate from the application console, which is guarded and clean.
+No live deployment, custom domain, real phone or real WhatsApp app was verified. Browser device emulation is not real-device sign-off. The restaurant identity/location remain illustrative; phone, WhatsApp and social values are empty until supplied. Memory fallback data disappears on close, and later dashboard synchronization is same-profile/same-origin only. Asset/stack/behavior decisions are in DECISIONS.md.
 
-## Grillizia rebrand — 2026-11-07
-
-The brand is now Grillizia across the wordmark, page title, config, package metadata and current documentation. npm run check passes (21 unit tests plus lint, typecheck and contrast); the production build also passes. The earlier Lighthouse and browser numbers above describe the M0–M1 baseline, not a fresh measurement of this rename.
+Tooling can emit Node deprecation/color-environment notices; these are separate from the guarded application console. After the final visible search-label polish, all eight focused layout/detail-sheet checks passed across the same four browser projects (1.1 minutes). The latest HTML report contains that focused run; the earlier full 80-test result is recorded above.

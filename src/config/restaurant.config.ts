@@ -49,6 +49,11 @@ export const restaurant: RestaurantConfig = {
   reservations: { maxGuests: 12, slotMinutes: 30, advanceDays: 30, capacityPerSlot: 3 },
   features: { remoteSync: false, sound: false },
   theme: {},
+  menuIntro: {
+    title: 'Follow your appetite.',
+    description:
+      'From the first smoky bite to the last sip of chai. Find something worth coming back for.',
+  },
   heroItemIds: ['chicken-tikka', 'karahi', 'biryani', 'seekh-kebab'],
   featuredItemIds: ['chicken-tikka', 'karahi', 'biryani', 'seekh-kebab'],
   story: {

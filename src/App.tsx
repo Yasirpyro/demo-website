@@ -6,6 +6,7 @@ import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
 import Home from './routes/Home';
 import NotFound from './routes/NotFound';
+const Menu = lazy(() => import('./routes/Menu'));
 const ComingSoon = lazy(() => import('./routes/ComingSoon'));
 function RouteFocus() {
   const location = useLocation();
@@ -38,7 +39,7 @@ export default function App() {
           >
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/menu" element={<ComingSoon />} />
+              <Route path="/menu" element={<Menu />} />
               <Route path="/reserve" element={<ComingSoon />} />
               <Route path="/dashboard" element={<ComingSoon />} />
               <Route path="*" element={<NotFound />} />

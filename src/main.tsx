@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './styles/fonts.css';
 import './styles/tokens.css';
 import './styles/app.css';
+import './styles/menu.css';
 import App from './App';
 import { applyRestaurantTheme } from './lib/theme';
 applyRestaurantTheme();

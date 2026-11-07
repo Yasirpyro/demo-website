@@ -1,6 +1,6 @@
 # Grillizia
 
-A white-label restaurant sales demo. This delivery implements the foundation and homepage (M0 + M1); menu, ordering, reservations, dashboard and offline installation follow in later milestones. See PROGRESS.md.
+A white-label restaurant sales demo. This delivery implements the foundation, homepage and interactive menu (M0–M2). Cart review, ordering, reservations, dashboard and offline installation follow in later milestones. See PROGRESS.md.
 
 ## Run locally
 
@@ -38,7 +38,7 @@ For a new prospect, copy/fork the repository, change config and assets, and crea
 
 ## Honest demo limits
 
-This is a fictional brand with no live contact number. No payments, accounts, backend or customer submissions exist in this delivery. Customer menu, booking and management routes clearly describe their pending milestones. Offline reload/installability is not ready until M8.
+This is a fictional brand with no live contact number. No payments, accounts, backend or customer submissions exist in this delivery. The menu supports browsing, filters, dish details and a locally saved selection. Booking and management routes clearly describe their pending milestones. Cart review and checkout are not available yet. Offline reload/installability is not ready until M8.
 
 Later BroadcastChannel/localStorage sync is per browser profile and origin: a phone and laptop do not synchronize. Both demo tabs must use the same browser profile. Private browsing may disable storage; the application falls back to memory and data disappears on close. Real-phone WhatsApp verification requires the owner at M9.
 

@@ -2,11 +2,6 @@ import { ArrowUpRight, Flame } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { restaurant } from '../config/restaurant.config';
 const stages: Record<string, { label: string; title: string; text: string }> = {
-  '/menu': {
-    label: 'M2 · MENU',
-    title: 'A little taste of what’s next.',
-    text: 'The full menu, search and dish details are the next milestone. For now, discover our signatures on the homepage.',
-  },
   '/reserve': {
     label: 'M5 · RESERVATIONS',
     title: 'Good things take a little time.',
@@ -19,7 +14,7 @@ const stages: Record<string, { label: string; title: string; text: string }> = {
   },
 };
 export default function ComingSoon() {
-  const stage = stages[useLocation().pathname] ?? stages['/menu'];
+  const stage = stages[useLocation().pathname] ?? stages['/reserve'];
   return (
     <section className="recovery">
       <Flame size={48} strokeWidth={1.25} aria-hidden="true" />

@@ -13,6 +13,7 @@ import {
 import { restaurant } from '../config/restaurant.config';
 import { menu } from '../config/menu.data';
 import { FoodImage } from '../components/ui/FoodImage';
+import { CategoryPanels } from '../components/menu/CategoryPanels';
 import { OpeningBadge } from '../components/layout/OpeningBadge';
 import { formatMoney } from '../lib/format';
 import { formatTime } from '../lib/hours';
@@ -186,6 +187,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <CategoryPanels />
       <section className="story-section container" id="story" aria-labelledby="story-title">
         <div className="story-visual">
           <FoodImage

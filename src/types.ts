@@ -34,6 +34,7 @@ export interface RestaurantConfig {
   };
   features: { remoteSync: boolean; sound: boolean };
   theme: ThemeTokens;
+  menuIntro: { title: string; description: string };
   heroItemIds: string[];
   featuredItemIds: string[];
   story: {
@@ -51,6 +52,7 @@ export interface Category {
   id: string;
   name: string;
   image: string;
+  imagePosition?: string;
   blurb: string;
 }
 export interface MenuItem {

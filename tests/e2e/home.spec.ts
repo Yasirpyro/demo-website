@@ -1,19 +1,5 @@
-import { test as base, expect } from '@playwright/test';
+import { test, expect } from './fixtures';
 import AxeBuilder from '@axe-core/playwright';
-const test = base.extend<{ consoleGuard: void }>({
-  consoleGuard: [
-    async ({ page }, use) => {
-      const issues: string[] = [];
-      page.on('console', (m) => {
-        if (['error', 'warning'].includes(m.type())) issues.push(m.type() + ': ' + m.text());
-      });
-      page.on('pageerror', (e) => issues.push(e.message));
-      await use();
-      expect(issues).toEqual([]);
-    },
-    { auto: true },
-  ],
-});
 const routes = ['/', '/menu', '/reserve', '/dashboard', '/not-a-page'];
 for (const route of routes) {
   test('direct route ' + route + ' is accessible', async ({ page }) => {

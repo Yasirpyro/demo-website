@@ -51,3 +51,17 @@ The host’s full Chromium audit timed out on DevTools Tracing.start. The same p
 ## Grillizia rebrand
 
 On 2026-11-07 the user renamed the demo brand to Grillizia. The display name, lowercase wordmark, package metadata and current project documentation follow that name. The existing palette, menu and flame mark are retained.
+
+## M2 menu sprint
+
+The user authorized M2 plus the Grillizia rename on 2026-11-07. The menu uses the existing editorial palette, Inter UI, Oswald category headings, local photography and Radix detail sheets. The homepage highlights four categories as specified by the reference layout; all five seed categories are available in menu chips.
+
+Search is debounced by 120 ms, matches names/descriptions/tags, and combines with category and one optional dietary tag. Query keys are q/category/tag; unknown categories/tags fall back to an unfiltered state rather than an error. Reloads retain valid URL filters.
+
+M2 includes the minimum real cart-intake contract so Add buttons work: Zustand persist, versioned StorageAdapter data, quantity cap 20 per dish/note combination, optional notes (240 UTF-16 code units), safe hydration and a saved-selection summary. User text renders through React. Cart drawer, per-line quantity/removal editing, fees, global sticky cart and checkout remain M3–M4. A visible preview notice makes clear that no orders are sent. This is not a completed M3 cart.
+
+Exact-dish photo gaps use branded fallback tiles rather than showing chicken for vegetarian dishes or chai for desserts. The paneer download failed twice despite a verified license/source page; filenames for owner-supplied replacements are in IMAGES_NEEDED.md. Chai cropping is set in menu data and passed through both cards and detail sheets.
+
+## WebKit hero-loading fallback
+
+The full M2 browser matrix reproduced WebKit unused-responsive-preload warnings during viewport changes, despite retiring the hint after image load. For WebKit-only user agents, the bootstrap hint is now omitted; the real hero image remains eager and high-priority. Chromium retains the early responsive preload. This explicit browser fallback favors the mandated clean console/reliable demo over a fragile optimization. No console warnings are filtered or suppressed in tests.

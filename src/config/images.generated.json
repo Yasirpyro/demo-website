@@ -4,6 +4,16 @@
     "width": 2000,
     "height": 3000
   },
+  "chai": {
+    "blur": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAAAQBQCdASoUAB4APw1ysFAsJySisBgMAYAhiWUAuwALrjbXG5/Cg+7vfncPisRTH4EgAMLLJI4w6szABeGM9ICWX5mMTHbIdkSvtYLIMdhuuoaIqKOps0UMcE+YDswslKxmE9aLXz1w/F9q2AAAAA==",
+    "width": 2000,
+    "height": 3000
+  },
+  "gulab-jamun": {
+    "blur": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAABQBQCdASoUABsAPxF8s1IsKCSisBgIAYAiCWwAnTNHRQAWeolLTLuOmNH+wKsr31Ibe6wA/s3lVOCcZHxEszdKOZQNJlIOn+1e6EnUcJ3Zo5/47DYvevlnsRvEMLv53js8el1r3VsQKb0JS9cF8wlxrJprRG3NVaFr3KXNNnJQIgAA",
+    "width": 2000,
+    "height": 2666
+  },
   "karahi": {
     "blur": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAADwBACdASoUABMAPxF6r1MsJ6OiqA1RgCIJZACxHt8BedeiByY4Mb28GP0omVOxboAA/uqQ4Jt7q+EIu9QHG/B43gEsSmp7HeLEm5uy1q5f3rzKa3eONqSKBr9tC53WHkSmJVx+illQXFc1eTjcAvUUZ2nbAAAA",
     "width": 2000,
@@ -11,6 +21,11 @@
   },
   "kebab": {
     "blur": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAABQBACdASoUAA0APxF0sFCsJqSisAgBgCIJbACdMoSA2CkDtYFiMiaUu6MQAP57Yx7eR+J4VckBWHQa7REUeUmpgpX8uemQ1+LrK0TLXwe00CZKClFKRYWkH0roQUWh8I1ErebujAA=",
+    "width": 2000,
+    "height": 1333
+  },
+  "naan": {
+    "blur": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAACwAwCdASoUAA0APxFysFAsJqSisAgBgCIJQBOgA8v1JSNuUfuKAAD+6Ps8bUwrPRilmdS9t6LHAcF4x4FaLx+TA2MsSzAB+9xvT6gA",
     "width": 2000,
     "height": 1333
   },

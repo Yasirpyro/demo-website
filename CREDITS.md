@@ -16,6 +16,15 @@ All downloaded from Pexels under https://www.pexels.com/license/ on 2026-11-07. 
 - biryani.jpg — alleksana: https://www.pexels.com/photo/delicious-chicken-biryani-4224314/
 - karahi.jpg — I Own My Food Art: https://www.pexels.com/photo/close-up-shot-of-delicious-chicken-curry-in-white-ceramic-bowl-8992836/
 
-naan.jpg and chai.jpg remain optional replacements for M2; their seed entries render branded tiles when reached.
-
 Bundled Lucide license text is also included under public/licenses/.
+
+## M2 local photography
+
+Downloaded from Pexels under the same Pexels license on 2026-11-07:
+
+- naan.jpg — Sandra Filipe: https://www.pexels.com/photo/bread-on-the-table-6183640/
+- chai.jpg — Charlotte May: https://www.pexels.com/photo/cup-of-milk-tea-on-table-5946614/
+
+These replace the M1 optional missing category assets. Photos remain representative illustrations of dish families.
+
+- gulab-jamun.jpg — Kiran (Pexels download metadata): https://images.pexels.com/photos/7406887/pexels-photo-7406887.jpeg ; discovered through https://www.pexels.com/search/gulab%20jamun/ under the Pexels license.

@@ -12,3 +12,7 @@ Put source files in assets-src and run npm run images. The pipeline generates wi
 | chai.jpg    | Karak chai                | 4:3                                     |
 
 Photos illustrate representative dishes, not a real restaurant?s serving sizes. Replace them with the prospect?s own photos before commercial use.
+
+## Exact-dish assets for M2
+
+These items use complete branded fallback tiles instead of unrelated meat, bread or tea photographs. Add the matching source file (4:3 card crop) and run npm run images: paneer-tikka.jpg, daal-makhani.jpg, vegetable-rice.jpg, raita.jpg, kachumber.jpg, lassi.jpg and kheer.jpg. The verified paneer source could not be downloaded after two attempts; no unlicensed substitute was used.

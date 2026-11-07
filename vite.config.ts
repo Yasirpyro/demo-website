@@ -62,7 +62,7 @@ export default defineConfig({
                   {
                     tag: 'script',
                     children:
-                      '(()=>{if(location.pathname!=="/")return;const link=document.createElement("link");const attrs=' +
+                      '(()=>{if(location.pathname!=="/"||(/AppleWebKit/.test(navigator.userAgent)&&!["Chrome/","Chromium/","Edg/"].some(value=>navigator.userAgent.includes(value))))return;const link=document.createElement("link");const attrs=' +
                       data +
                       ';for(const [name,value] of Object.entries(attrs))link.setAttribute(name,value);link.dataset.heroPreload="";document.head.append(link);})();',
                     injectTo: 'head',
