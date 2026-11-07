@@ -1,5 +1,17 @@
 import { test, expect } from './fixtures';
 import AxeBuilder from '@axe-core/playwright';
+test.beforeEach(async ({ page }) => {
+  await page.addInitScript(() => {
+    const click = HTMLAnchorElement.prototype.click;
+    HTMLAnchorElement.prototype.click = function () {
+      if (this.href.startsWith('https://wa.me/')) {
+        sessionStorage.setItem('tested-whatsapp-url', this.href);
+        return;
+      }
+      click.call(this);
+    };
+  });
+});
 test('cart edits, checkout validation, local order and copy recovery', async ({ page }) => {
   await page.goto('/menu');
   await page.getByRole('button', { name: 'Add The signature tikka to cart', exact: true }).click();
@@ -22,6 +34,10 @@ test('cart edits, checkout validation, local order and copy recovery', async ({ 
   await expect(dialog.getByRole('heading', { name: /ORD-0001/ })).toBeVisible();
   await expect(dialog.getByLabel('Full order text')).toHaveValue(/کم مرچ 🌶/);
   await expect(dialog.getByRole('button', { name: 'Copy order text' })).toBeVisible();
+  await expect(dialog.getByRole('link', { name: 'Open WhatsApp again' })).toHaveAttribute(
+    'href',
+    /wa.me\/923112442147/,
+  );
   expect(
     await page.evaluate(
       () => JSON.parse(localStorage.getItem('rdemo:v1:orders')!).state.records.length,

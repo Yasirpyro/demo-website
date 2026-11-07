@@ -7,7 +7,7 @@
 - [x] M4 WhatsApp ordering — validated checkout, local orders, bounded links and copy recovery; 44 unit tests pass
 - [x] M5 Reservations — timezone slots, capacity, validation, confirmation and calendar export; 49 unit tests pass
 - [x] M6 Offers + Reviews — configured discounted bundles, computed savings, sample reviews and reserve teaser; 51 unit tests pass
-- [ ] M7 Dashboard
+- [x] M7 Dashboard — local service ledger, statuses, simulation/reset and cross-tab synchronization; 53 unit tests pass
 - [ ] M8 Offline + polish
 - [ ] M9 Verification + deploy
 

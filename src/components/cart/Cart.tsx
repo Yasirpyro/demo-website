@@ -122,7 +122,11 @@ export function Cart() {
               </ul>
               <label>
                 Order type
-                <select value={type} onChange={(e) => setType(e.target.value as OrderType)}>
+                <select
+                  aria-label="Order type"
+                  value={type}
+                  onChange={(e) => setType(e.target.value as OrderType)}
+                >
                   <option value="pickup">Pickup</option>
                   <option value="delivery">Delivery</option>
                   <option value="dinein">Dine-in</option>
