@@ -16,8 +16,8 @@ export const boldDark: ThemeTokens = {
 
 export const restaurant: RestaurantConfig = {
   mode: 'demo',
-  name: 'Saffron & Ember',
-  shortName: 'saffron & ember',
+  name: 'Grillizia',
+  shortName: 'grillizia',
   brandDescriptor: 'Grill & Café',
   heroFootnote: 'Fresh off the grill. Straight to the heart.',
   footerTagline: 'Good food. Better together.',

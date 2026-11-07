@@ -62,3 +62,7 @@ The brand and location are fictional/illustrative. Phone, WhatsApp and social fi
 Browser emulation is not a substitute for real-device sign-off. Later dashboard sync is same-profile/same-origin only; memory fallback data disappears on close. Detailed defaults and justified adaptations are in DECISIONS.md.
 
 The Node 26 test tooling emits process-level deprecation/color-environment notices; these are separate from the application console, which is guarded and clean.
+
+## Grillizia rebrand — 2026-11-07
+
+The brand is now Grillizia across the wordmark, page title, config, package metadata and current documentation. npm run check passes (21 unit tests plus lint, typecheck and contrast); the production build also passes. The earlier Lighthouse and browser numbers above describe the M0–M1 baseline, not a fresh measurement of this rename.

@@ -3,7 +3,7 @@
 ## Assumptions
 
 - First delivery is M0 + M1. Later flows are explicitly unavailable, not simulated as working features.
-- Fictional Saffron & Ember; Pakistani grill and café; PKR with zero fractional digits; en-PK locale; Asia/Karachi timezone.
+- Fictional Grillizia; Pakistani grill and café; PKR with zero fractional digits; en-PK locale; Asia/Karachi timezone.
 - Clifton is illustrative. No precise invented address, phone number or social handle is published. Empty contacts are hidden. Real contact values go in restaurant.config.ts before prospect use.
 - Homepage uses the supplied warm bakery composition adapted to grilled food. Use Inter for headings/UI and Oswald for accent labels; IBM Plex Mono is reserved for the later dashboard so no page uses more than two families.
 - Supplied reference documents remain authoritative under docs/. Root AGENTS.md delegates to them.
@@ -47,3 +47,7 @@ Vite excludes generated caches, browser reports, test results and local tooling 
 ## Lighthouse runner
 
 The host’s full Chromium audit timed out on DevTools Tracing.start. The same production output audited successfully with Playwright’s dedicated headless shell; README documents the exact Windows runner setting. Performance thresholds are measured with that browser, not assumed from the passing functional suite.
+
+## Grillizia rebrand
+
+On 2026-11-07 the user renamed the demo brand to Grillizia. The display name, lowercase wordmark, package metadata and current project documentation follow that name. The existing palette, menu and flame mark are retained.

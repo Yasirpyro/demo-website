@@ -1,4 +1,4 @@
-# Saffron & Ember
+# Grillizia
 
 A white-label restaurant sales demo. This delivery implements the foundation and homepage (M0 + M1); menu, ordering, reservations, dashboard and offline installation follow in later milestones. See PROGRESS.md.
 
