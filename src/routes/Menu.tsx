@@ -85,7 +85,7 @@ export default function Menu() {
           <p>{restaurant.menuIntro.description}</p>
           <div className="menu-preview-note">
             <ShoppingBag size={17} aria-hidden="true" />
-            <span>Menu preview · Save a local cart. Orders are not sent from this preview.</span>
+            <span>Prepared to order · Build your cart, then share it on WhatsApp.</span>
           </div>
         </div>
         <div className="menu-filter-bar">
@@ -197,7 +197,7 @@ export default function Menu() {
                   </li>
                 ))}
               </ul>
-              <p>Online checkout is not available yet.</p>
+              <p>Use the cart button to edit your selection and order on WhatsApp.</p>
               <button className="clear-selection" onClick={clear}>
                 Clear saved selection
               </button>

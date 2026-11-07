@@ -1,4 +1,6 @@
-﻿import { useState } from 'react';
+import { Checkout, OrderConfirmation } from './Checkout';
+import type { Order } from '../../lib/records';
+import { useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { Link } from 'react-router-dom';
 import { ShoppingBag, X, Minus, Plus, Trash2 } from 'lucide-react';
@@ -9,6 +11,7 @@ import { formatMoney } from '../../lib/format';
 import { FoodImage } from '../ui/FoodImage';
 export function Cart() {
   const [open, setOpen] = useState(false);
+  const [order, setOrder] = useState<Order | null>(null);
   const [type, setType] = useState<OrderType>('pickup');
   const [removed, setRemoved] = useState<CartLine | null>(null);
   const cart = useCartStore();
@@ -44,7 +47,14 @@ export function Cart() {
           <Dialog.Description>
             Choose your favourites. Everything is saved on this browser.
           </Dialog.Description>
-          {cart.lines.length === 0 ? (
+          {order ? (
+            <>
+              <OrderConfirmation order={order} />
+              <button className="button button-secondary" onClick={() => setOrder(null)}>
+                Start another order
+              </button>
+            </>
+          ) : cart.lines.length === 0 ? (
             <div className="commerce-empty">
               <ShoppingBag size={38} />
               <h3>A little room for something good.</h3>
@@ -60,7 +70,12 @@ export function Cart() {
                   if (!item) return null;
                   return (
                     <li key={index}>
-                      <FoodImage image={item.image} sizes="76px" alt={item.name} className="cart-photo" />
+                      <FoodImage
+                        image={item.image}
+                        sizes="76px"
+                        alt={item.name}
+                        className="cart-photo"
+                      />
                       <div className="cart-line-copy">
                         <h3>{item.name}</h3>
                         <strong>{formatMoney(item.price * line.qty)}</strong>
@@ -140,7 +155,7 @@ export function Cart() {
                   <dd>{formatMoney(totals.total)}</dd>
                 </div>
               </dl>
-              <p className="local-hint">Checkout arrives in the next milestone.</p>
+              <Checkout type={type} onComplete={setOrder} />
             </>
           )}
           {removed && (
@@ -161,4 +176,3 @@ export function Cart() {
     </Dialog.Root>
   );
 }
-

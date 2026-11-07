@@ -4,7 +4,7 @@
 - [x] M1 Layout + Hero — responsive homepage, 21 unit tests, 48 browser tests, aggregate Lighthouse CI assertions pass
 - [x] M2 Menu — Grillizia rebrand, category panels, 20-dish menu, URL filters, detail sheets and persisted local cart intake; 37 unit tests and 80 browser tests pass
 - [x] M3 Cart — drawer, mobile bar, notes, quantities, integer fees and undo; 40 unit tests pass
-- [ ] M4 WhatsApp ordering
+- [x] M4 WhatsApp ordering — validated checkout, local orders, bounded links and copy recovery; 44 unit tests pass
 - [ ] M5 Reservations
 - [ ] M6 Offers + Reviews
 - [ ] M7 Dashboard
