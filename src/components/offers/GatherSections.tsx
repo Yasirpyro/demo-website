@@ -114,7 +114,11 @@ export function GatherSections() {
           <div className="reviews-rail" ref={reviewRail}>
             {reviews.map((review) => (
               <article className="review-card" key={review.id}>
-                <div className="review-stars" aria-label={review.rating + ' out of 5 stars'}>
+                <div
+                  className="review-stars"
+                  role="img"
+                  aria-label={review.rating + ' out of 5 stars'}
+                >
                   {Array.from({ length: review.rating }, (_, i) => (
                     <Star key={i} size={17} aria-hidden="true" />
                   ))}

@@ -1,3 +1,4 @@
+import { VitePWA } from 'vite-plugin-pwa';
 import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
 import { restaurant } from './src/config/restaurant.config';
@@ -19,6 +20,43 @@ export default defineConfig({
   },
   plugins: [
     react(),
+    VitePWA({
+      registerType: 'autoUpdate',
+      injectRegister: false,
+      includeAssets: ['favicon.svg', 'icons/*.png', 'og-image.png'],
+      manifest: {
+        name: restaurant.name,
+        short_name: restaurant.shortName,
+        description: restaurant.description,
+        theme_color: '#8E1B22',
+        background_color: '#EFE1C6',
+        display: 'standalone',
+        start_url: '/',
+        scope: '/',
+        icons: [
+          {
+            src: '/icons/icon-192.png',
+            sizes: '192x192',
+            type: 'image/png',
+            purpose: 'any maskable',
+          },
+          {
+            src: '/icons/icon-512.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'any maskable',
+          },
+        ],
+      },
+      workbox: {
+        clientsClaim: true,
+        skipWaiting: true,
+        globPatterns: ['**/*.{js,css,html,png,svg,webp,woff,woff2,ico}'],
+        navigateFallback: '/index.html',
+        cleanupOutdatedCaches: true,
+        maximumFileSizeToCacheInBytes: 3 * 1024 * 1024,
+      },
+    }),
     {
       name: 'restaurant-document',
       buildStart() {
@@ -60,8 +98,8 @@ export default defineConfig({
               /<meta name="description" content="[^"]*"/,
               '<meta name="description" content="' + escape(restaurant.description) + '"',
             ),
-          tags:
-            hero && hero.image in images
+          tags: [
+            ...(hero && hero.image in images
               ? [
                   {
                     tag: 'script',
@@ -69,10 +107,64 @@ export default defineConfig({
                       '(()=>{if(location.pathname!=="/"||(/AppleWebKit/.test(navigator.userAgent)&&!["Chrome/","Chromium/","Edg/"].some(value=>navigator.userAgent.includes(value))))return;const link=document.createElement("link");const attrs=' +
                       data +
                       ';for(const [name,value] of Object.entries(attrs))link.setAttribute(name,value);link.dataset.heroPreload="";document.head.append(link);})();',
-                    injectTo: 'head',
+                    injectTo: 'head' as const,
                   },
                 ]
-              : [],
+              : []),
+            {
+              tag: 'meta',
+              attrs: {
+                property: 'og:title',
+                content: restaurant.name + ' — ' + restaurant.brandDescriptor,
+              },
+            },
+            { tag: 'meta', attrs: { property: 'og:description', content: restaurant.description } },
+            { tag: 'meta', attrs: { property: 'og:type', content: 'website' } },
+            { tag: 'meta', attrs: { property: 'og:image', content: '/og-image.png' } },
+            {
+              tag: 'meta',
+              attrs: {
+                property: 'og:image:alt',
+                content: restaurant.name + ' — ' + restaurant.footerTagline,
+              },
+            },
+            { tag: 'link', attrs: { rel: 'apple-touch-icon', href: '/icons/icon-192.png' } },
+            {
+              tag: 'script',
+              attrs: { type: 'application/ld+json' },
+              children: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'Restaurant',
+                name: restaurant.name,
+                description: restaurant.description,
+                address: restaurant.address,
+                telephone: restaurant.phone,
+                servesCuisine: restaurant.brandDescriptor,
+                priceRange: '$',
+                hasMenu: {
+                  '@type': 'Menu',
+                  name: restaurant.name + ' menu',
+                  hasMenuSection: {
+                    '@type': 'MenuSection',
+                    name: 'Our menu',
+                    hasMenuItem: menu.map((item) => ({
+                      '@type': 'MenuItem',
+                      name: item.name,
+                      description: item.description,
+                      offers: {
+                        '@type': 'Offer',
+                        price: item.price / 10 ** restaurant.currency.fractionDigits,
+                        priceCurrency: restaurant.currency.code,
+                        availability: item.available
+                          ? 'https://schema.org/InStock'
+                          : 'https://schema.org/OutOfStock',
+                      },
+                    })),
+                  },
+                },
+              }).replaceAll('<', '\\u003c'),
+            },
+          ],
         };
       },
     },

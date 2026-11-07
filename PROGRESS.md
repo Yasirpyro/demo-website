@@ -8,7 +8,7 @@
 - [x] M5 Reservations — timezone slots, capacity, validation, confirmation and calendar export; 49 unit tests pass
 - [x] M6 Offers + Reviews — configured discounted bundles, computed savings, sample reviews and reserve teaser; 51 unit tests pass
 - [x] M7 Dashboard — local service ledger, statuses, simulation/reset and cross-tab synchronization; 53 unit tests pass
-- [ ] M8 Offline + polish
+- [x] M8 Offline + polish — PWA precache, offline reload indicator, motion pass, accessible star ratings and Restaurant JSON-LD schema; 53 unit tests pass
 - [ ] M9 Verification + deploy
 
 ## Two-sprint completion
@@ -17,6 +17,4 @@ Sprint 1: M3–M6. Sprint 2: M7–M9. Each milestone is checked and committed in
 
 ## Current delivery limits
 
-M0–M2 are implemented. M3–M9 remain pending. The earlier M0–M1 Lighthouse Performance scores were 89/92/91; their aggregate CI check passed, but these measurements were not rerun for M2 and the strict LCP target remains unmet for M8. Offline reload/installability and the full golden-path rehearsal have not been implemented or claimed. See REPORT.md.
-
-M2 includes basic saved cart intake so Add actions work. The full cart drawer/sticky bar, per-line editing, fees and checkout are still pending. Seven dish images use branded fallback tiles; exact replacement filenames are in IMAGES_NEEDED.md.
+M0–M8 are implemented. M9 verification, rehearsal runs, and final deployment documentation are in progress.

@@ -1,3 +1,4 @@
+import { OfflineStatus } from './components/ui/OfflineStatus';
 import { startSync } from './store/sync';
 import { lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
@@ -49,6 +50,7 @@ export default function App() {
             </Routes>
           </Suspense>
         </main>
+        <OfflineStatus />
         <Footer />
         <RouteFocus />
       </BrowserRouter>

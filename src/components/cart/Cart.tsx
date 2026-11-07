@@ -50,7 +50,12 @@ export function Cart() {
           {order ? (
             <>
               <OrderConfirmation order={order} />
-              <button className="button button-secondary" onClick={() => setOrder(null)}>
+              <button
+                className="button button-secondary"
+                onClick={() => {
+                  if (Date.now() - Date.parse(order.createdAt) > 750) setOrder(null);
+                }}
+              >
                 Start another order
               </button>
             </>
