@@ -5,7 +5,7 @@
 - [x] M2 Menu — Grillizia rebrand, category panels, 20-dish menu, URL filters, detail sheets and persisted local cart intake; 37 unit tests and 80 browser tests pass
 - [x] M3 Cart — drawer, mobile bar, notes, quantities, integer fees and undo; 40 unit tests pass
 - [x] M4 WhatsApp ordering — validated checkout, local orders, bounded links and copy recovery; 44 unit tests pass
-- [ ] M5 Reservations
+- [x] M5 Reservations — timezone slots, capacity, validation, confirmation and calendar export; 49 unit tests pass
 - [ ] M6 Offers + Reviews
 - [ ] M7 Dashboard
 - [ ] M8 Offline + polish

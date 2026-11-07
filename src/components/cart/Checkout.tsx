@@ -82,25 +82,23 @@ export function Checkout({
     if (!cart.lines.length) return;
     locked.current = true;
     const totals = cartTotals(cart.lines, type);
-    const order = useOrdersStore
-      .getState()
-      .add({
-        customer: {
-          name: values.name,
-          ...(values.phone ? { phone: values.phone } : {}),
-          ...(type === 'delivery' ? { address: values.address } : {}),
-          ...(type === 'dinein' && values.table ? { table: values.table } : {}),
-        },
-        type,
-        lines: cart.lines.map((line) => ({
-          name: menu.find((item) => item.id === line.itemId)!.name,
-          qty: line.qty,
-          unitPrice: menu.find((item) => item.id === line.itemId)!.price,
-          note: line.note,
-        })),
-        notes: cart.notes,
-        ...totals,
-      });
+    const order = useOrdersStore.getState().add({
+      customer: {
+        name: values.name,
+        ...(values.phone ? { phone: values.phone } : {}),
+        ...(type === 'delivery' ? { address: values.address } : {}),
+        ...(type === 'dinein' && values.table ? { table: values.table } : {}),
+      },
+      type,
+      lines: cart.lines.map((line) => ({
+        name: menu.find((item) => item.id === line.itemId)!.name,
+        qty: line.qty,
+        unitPrice: menu.find((item) => item.id === line.itemId)!.price,
+        note: line.note,
+      })),
+      notes: cart.notes,
+      ...totals,
+    });
     onComplete(order);
     cart.clear();
     openWhatsApp(orderLink(order).url);
